@@ -10,7 +10,7 @@ import org.springframework.context.support.GenericXmlApplicationContext;
 public class FieldInjection {
     public static void main(String[] args) {
         GenericXmlApplicationContext context = new GenericXmlApplicationContext();
-        context.load("ch03.di.fieldInjection/beans.xml");
+        context.load("ch03/di/fieldInjection/beans.xml");
         context.refresh();
 
         Singer singer = context.getBean(Singer.class);
