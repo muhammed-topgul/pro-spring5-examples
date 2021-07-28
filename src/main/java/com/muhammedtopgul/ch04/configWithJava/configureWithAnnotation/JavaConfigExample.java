@@ -1,4 +1,4 @@
-package com.muhammedtopgul.ch04.configWithJava.exampleOne;
+package com.muhammedtopgul.ch04.configWithJava.configureWithAnnotation;
 
 /*
  * created by Muhammed Topgul
@@ -11,9 +11,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 public class JavaConfigExample {
     public static void main(String... args) {
-        // ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfigOne.class);
-        // ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfigTwo.class);
-        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfigThree.class);
+        ApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
 
         MessageRenderer renderer = ctx.getBean("messageRenderer", MessageRenderer.class);
         renderer.render();

@@ -1,4 +1,4 @@
-package com.muhammedtopgul.ch04.configWithJava.exampleOne;
+package com.muhammedtopgul.ch04.configWithJava.configureWithBean;
 
 /*
  * created by Muhammed Topgul
