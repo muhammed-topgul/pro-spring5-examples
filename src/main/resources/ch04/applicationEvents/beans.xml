@@ -6,7 +6,7 @@
        default-lazy-init="true">
 
     <bean id="publisher"
-          class="com.muhammedtopgul.ch04.applicationEvents.Publisher"/>
+          class="com.muhammedtopgul.ch04.configuration.applicationEvents.Publisher"/>
     <bean id="messageEventListener"
-          class="com.muhammedtopgul.ch04.applicationEvents.MessageEventListener"/>
+          class="com.muhammedtopgul.ch04.configuration.applicationEvents.MessageEventListener"/>
 </beans>

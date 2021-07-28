@@ -11,10 +11,10 @@
           class="org.springframework.beans.factory.config.CustomEditorConfigurer"
           p:propertyEditorRegistrars-ref="propertyEditorRegistrarsList"/>
     <util:list id="propertyEditorRegistrarsList">
-        <bean class="com.muhammedtopgul.ch04.javaBeansPropertyEditors.builtInEditors.PropertyEditorBean$CustomPropertyEditorRegistrar"/>
+        <bean class="com.muhammedtopgul.ch04.configuration.javaBeansPropertyEditors.builtInEditors.PropertyEditorBean$CustomPropertyEditorRegistrar"/>
     </util:list>
     <bean id="builtInSample"
-          class="com.muhammedtopgul.ch04.javaBeansPropertyEditors.builtInEditors.PropertyEditorBean"
+          class="com.muhammedtopgul.ch04.configuration.javaBeansPropertyEditors.builtInEditors.PropertyEditorBean"
           p:character="A"
           p:bytes="John Mayer"
           p:cls="java.lang.String"

@@ -5,7 +5,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
  http://www.springframework.org/schema/beans/spring-beans.xsd">
     <bean id="destructiveBean"
-          class="com.muhammedtopgul.ch04.beanDestruction.executingMethod.DestructiveBean"
+          class="com.muhammedtopgul.ch04.configuration.beanDestruction.executingMethod.DestructiveBean"
           destroy-method="destroy"
           p:filePath="#{systemProperties['java.io.tmpdir']}#{systemProperties['file.separator']}test.txt"/>
 </beans>

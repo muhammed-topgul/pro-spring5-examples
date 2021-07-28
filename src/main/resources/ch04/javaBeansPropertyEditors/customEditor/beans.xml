@@ -9,12 +9,12 @@
           class="org.springframework.beans.factory.config.CustomEditorConfigurer">
         <property name="customEditors">
             <map>
-                <entry key="com.muhammedtopgul.ch04.javaBeansPropertyEditors.customEditor.FullName"
-                       value="com.muhammedtopgul.ch04.javaBeansPropertyEditors.customEditor.NamePropertyEditor"/>
+                <entry key="com.muhammedtopgul.ch04.configuration.javaBeansPropertyEditors.customEditor.FullName"
+                       value="com.muhammedtopgul.ch04.configuration.javaBeansPropertyEditors.customEditor.NamePropertyEditor"/>
             </map>
         </property>
     </bean>
     <bean id="exampleBean"
-          class="com.muhammedtopgul.ch04.javaBeansPropertyEditors.customEditor.CustomEditorExample"
+          class="com.muhammedtopgul.ch04.configuration.javaBeansPropertyEditors.customEditor.CustomEditorExample"
           p:name="John Mayer"/>
 </beans>

@@ -6,13 +6,13 @@
  http://www.springframework.org/schema/beans/spring-beans.xsd"
        default-lazy-init="true">
     <bean id="singerOne"
-          class="com.muhammedtopgul.ch04.beanCreation.initializeBeanInterface.SingerWithInterface"
+          class="com.muhammedtopgul.ch04.configuration.beanCreation.initializeBeanInterface.SingerWithInterface"
           p:name="John Mayer"
           p:age="39"/>
     <bean id="singerTwo"
-          class="com.muhammedtopgul.ch04.beanCreation.initializeBeanInterface.SingerWithInterface"
+          class="com.muhammedtopgul.ch04.configuration.beanCreation.initializeBeanInterface.SingerWithInterface"
           p:age="72"/>
     <bean id="singerThree"
-          class="com.muhammedtopgul.ch04.beanCreation.initializeBeanInterface.SingerWithInterface"
+          class="com.muhammedtopgul.ch04.configuration.beanCreation.initializeBeanInterface.SingerWithInterface"
           p:name="John Butler"/>
 </beans>
