@@ -1,4 +1,4 @@
-package com.muhammedtopgul.ch05.aop.aopArchitecture;
+package com.muhammedtopgul.ch05.aop.aopArchitecture.beforeAdvice;
 
 /*
  * created by Muhammed Topgul
