@@ -6,12 +6,17 @@ package com.muhammedtopgul.ch07.hibernate.entity;
  * at 17:36
  */
 
+import lombok.Getter;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table(name = "album")
+@Getter
+@Setter
 public class Album implements Serializable {
 
     @Id
@@ -29,6 +34,10 @@ public class Album implements Serializable {
     @Version
     @Column(name = "VERSION")
     private int version;
+
+    @ManyToOne
+    @JoinColumn(name = "SINGER_ID")
+    private Singer singer;
 
     @Override
     public String toString() {
