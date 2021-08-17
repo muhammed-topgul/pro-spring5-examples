@@ -1,4 +1,4 @@
-package com.muhammedtopgul.ch07.hibernate;
+package com.muhammedtopgul.ch07.hibernate.config;
 
 /*
  * created by Muhammed Topgul
@@ -6,12 +6,17 @@ package com.muhammedtopgul.ch07.hibernate;
  * at 17:10
  */
 
+import com.muhammedtopgul.ch07.hibernate.entity.Album;
+import com.muhammedtopgul.ch07.hibernate.entity.Instrument;
+import com.muhammedtopgul.ch07.hibernate.entity.Singer;
 import org.hibernate.SessionFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
@@ -46,7 +51,7 @@ public class AppConfig {
 
     private Properties hibernateProperties() {
         Properties hibernateProperties = new Properties();
-        hibernateProperties.put("hibernate.dialect","org.hibernate.dialect.H2Dialect");
+        hibernateProperties.put("hibernate.dialect", "org.hibernate.dialect.H2Dialect");
         hibernateProperties.put("hibernate.format_sql", true);
         hibernateProperties.put("hibernate.use_sql_comments", true);
         hibernateProperties.put("hibernate.show_sql", true);
@@ -58,9 +63,11 @@ public class AppConfig {
 
     @Bean
     public SessionFactory sessionFactory() throws IOException {
+        Resource resource = new ClassPathResource("hibernateAnnotations.cfg.xml");
         LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
         sessionFactoryBean.setDataSource(dataSource());
-        sessionFactoryBean.setPackagesToScan("com.muhammedtopgul.ch07.entity");
+        sessionFactoryBean.setConfigLocation(resource);
+        // sessionFactoryBean.setPackagesToScan("com.muhammedtopgul.ch07.entity");
         sessionFactoryBean.setHibernateProperties(hibernateProperties());
         sessionFactoryBean.afterPropertiesSet();
         return sessionFactoryBean.getObject();
