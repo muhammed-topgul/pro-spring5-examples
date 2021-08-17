@@ -43,6 +43,13 @@ public class Singer implements Serializable {
     @OneToMany(mappedBy = "singer", cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Album> albums = new HashSet<>();
 
+    @ManyToMany
+    @JoinTable(name = "singer_instrument",
+            joinColumns = @JoinColumn(name = "SINGER_ID"),
+            inverseJoinColumns = @JoinColumn(name = "INSTRUMENT_ID"))
+    private Set<Instrument> instruments = new HashSet<>();
+
+    //
     public boolean addAlbum(Album album) {
         album.setSinger(this);
         return getAlbums().add(album);
