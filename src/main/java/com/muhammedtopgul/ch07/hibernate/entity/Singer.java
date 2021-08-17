@@ -17,6 +17,17 @@ import java.util.Set;
 
 @Entity
 @Table(name = "singer")
+@NamedQueries({
+        @NamedQuery(name = "Singer.findAllWithAlbum",
+                query = "select distinct s from Singer s " +
+                        "left join fetch s.albums a " +
+                        "left join fetch s.instruments"),
+        @NamedQuery(name = "Singer.findById",
+                query = "select distinct s from Singer s " +
+                        "left join fetch s.albums a " +
+                        "left join fetch s.instruments " +
+                        "where s.id = :id")
+})
 @Getter
 @Setter
 public class Singer implements Serializable {

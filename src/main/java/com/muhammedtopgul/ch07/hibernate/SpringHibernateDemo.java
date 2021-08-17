@@ -8,6 +8,8 @@ package com.muhammedtopgul.ch07.hibernate;
 
 import com.muhammedtopgul.ch07.hibernate.config.AppConfig;
 import com.muhammedtopgul.ch07.hibernate.dao.SingerDao;
+import com.muhammedtopgul.ch07.hibernate.entity.Album;
+import com.muhammedtopgul.ch07.hibernate.entity.Instrument;
 import com.muhammedtopgul.ch07.hibernate.entity.Singer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,16 +26,39 @@ public class SpringHibernateDemo {
         GenericApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
 
         SingerDao singerDao = ctx.getBean(SingerDao.class);
-        listSingers(singerDao.findAll());
 
-        System.out.println(singerDao.findById(1L));
+        listSingers(singerDao.findAll());
+        listSingersWithAlbum(singerDao.findAllWithAlbum());
+        printSinger(singerDao.findById(1L));
+
         ctx.close();
     }
 
+    private static void printSinger(Singer singer) {
+        System.out.println("\n" + singer.toString());
+    }
+
     private static void listSingers(List<Singer> singers) {
-        logger.debug(" ---- Listing singers:");
+        System.out.println("\n ---- Listing singers:");
         for (Singer singer : singers) {
             System.out.println(singer.toString());
+        }
+    }
+
+    private static void listSingersWithAlbum(List<Singer> singers) {
+        System.out.println(" \n---- Listing singers with instruments:");
+        for (Singer singer : singers) {
+            System.out.println(singer.toString());
+            if (singer.getAlbums() != null) {
+                for (Album album : singer.getAlbums()) {
+                    System.out.println("\t" + album.toString());
+                }
+            }
+            if (singer.getInstruments() != null) {
+                for (Instrument instrument : singer.getInstruments()) {
+                    System.out.println("\t" + instrument.getInstrumentId());
+                }
+            }
         }
     }
 }
