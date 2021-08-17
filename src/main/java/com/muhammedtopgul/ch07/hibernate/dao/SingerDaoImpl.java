@@ -62,8 +62,12 @@ public class SingerDaoImpl implements SingerDao {
     }
 
     @Override
-    public Singer save(Singer contact) {
-        return null;
+    public Singer save(Singer singer) {
+        sessionFactory
+                .getCurrentSession()
+                .saveOrUpdate(singer);
+        System.out.println("Singer saved with id: " + singer.getId());
+        return singer;
     }
 
     @Override

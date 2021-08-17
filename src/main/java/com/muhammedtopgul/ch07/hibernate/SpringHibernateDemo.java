@@ -27,25 +27,29 @@ public class SpringHibernateDemo {
 
         SingerDao singerDao = ctx.getBean(SingerDao.class);
 
+        /*
         listSingers(singerDao.findAll());
         listSingersWithAlbum(singerDao.findAllWithAlbum());
         printSinger(singerDao.findById(1L));
+         */
+
+
 
         ctx.close();
     }
 
-    private static void printSinger(Singer singer) {
+    public static void printSinger(Singer singer) {
         System.out.println("\n" + singer.toString());
     }
 
-    private static void listSingers(List<Singer> singers) {
+    public static void listSingers(List<Singer> singers) {
         System.out.println("\n ---- Listing singers:");
         for (Singer singer : singers) {
             System.out.println(singer.toString());
         }
     }
 
-    private static void listSingersWithAlbum(List<Singer> singers) {
+    public static void listSingersWithAlbum(List<Singer> singers) {
         System.out.println(" \n---- Listing singers with instruments:");
         for (Singer singer : singers) {
             System.out.println(singer.toString());
