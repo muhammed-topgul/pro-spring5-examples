@@ -1,4 +1,4 @@
-package com.muhammedtopgul.ch06.jdbc.dao;
+package com.muhammedtopgul.ch06.jdbc.crud.dao;
 
 /*
  * created by Muhammed Topgul
@@ -6,11 +6,10 @@ package com.muhammedtopgul.ch06.jdbc.dao;
  * at 19:27
  */
 
-import com.muhammedtopgul.ch06.jdbc.entity.Singer;
+import com.muhammedtopgul.ch06.jdbc.crud.entity.Singer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;

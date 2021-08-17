@@ -1,4 +1,4 @@
-package com.muhammedtopgul.ch06.jdbc;
+package com.muhammedtopgul.ch06.jdbc.crud;
 
 /*
  * created by Muhammed Topgul
@@ -6,9 +6,9 @@ package com.muhammedtopgul.ch06.jdbc;
  * at 23:07
  */
 
-import com.muhammedtopgul.ch06.jdbc.dao.PlainSingerDao;
-import com.muhammedtopgul.ch06.jdbc.dao.SingerDao;
-import com.muhammedtopgul.ch06.jdbc.entity.Singer;
+import com.muhammedtopgul.ch06.jdbc.crud.dao.PlainSingerDao;
+import com.muhammedtopgul.ch06.jdbc.crud.dao.SingerDao;
+import com.muhammedtopgul.ch06.jdbc.crud.entity.Singer;
 import org.apache.log4j.BasicConfigurator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

@@ -8,8 +8,8 @@
             <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{5} - %msg%n</pattern>
         </encoder>
     </appender>
-    <logger name="com.muhammedtopgul.ch06.jdbc.PlainJdbcDemo" level="debug"/>
-    <logger name="com.muhammedtopgul.ch06.jdbc.dao.PlainSingerDao" level="debug"/>
+    <logger name="com.muhammedtopgul.ch06.jdbc.crud.PlainJdbcDemo" level="debug"/>
+    <logger name="com.muhammedtopgul.ch06.jdbc.crud.dao.PlainSingerDao" level="debug"/>
     <logger name="org.springframework" level="off"/>
     <root level="debug">
         <appender-ref ref="console" />

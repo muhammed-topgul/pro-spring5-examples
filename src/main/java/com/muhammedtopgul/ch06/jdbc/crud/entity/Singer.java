@@ -1,4 +1,4 @@
-package com.muhammedtopgul.ch06.jdbc.entity;
+package com.muhammedtopgul.ch06.jdbc.crud.entity;
 
 /*
  * created by Muhammed Topgul
