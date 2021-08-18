@@ -63,7 +63,7 @@ public class AppConfig {
 
     @Bean
     public SessionFactory sessionFactory() throws IOException {
-        Resource resource = new ClassPathResource("hibernateAnnotations.cfg.xml");
+        Resource resource = new ClassPathResource("ch07/hibernateAnnotations.cfg.xml");
         LocalSessionFactoryBean sessionFactoryBean = new LocalSessionFactoryBean();
         sessionFactoryBean.setDataSource(dataSource());
         sessionFactoryBean.setConfigLocation(resource);
