@@ -36,6 +36,7 @@ public class SingerDaoTest {
         assertNotNull(singerDao);
     }
 
+    // INSERT
     @Test
     public void testInsert() {
         Singer singer = new Singer();
@@ -83,6 +84,25 @@ public class SingerDaoTest {
         Singer singer = singerDao.findById(1L);
         assertNotNull(singer);
         printSinger(singer);
+    }
+
+    // UPDATE
+    @Test
+    public void testUpdate(){
+        Singer singer = singerDao.findById(1L);
+        //making sure such singer exists
+        assertNotNull(singer);
+        //making sure we got expected singer
+        assertEquals("Mayer", singer.getLastName());
+        //retrieve the album
+        Album album = singer.getAlbums()
+                .stream().filter(
+                a -> a.getTitle().equals("Battle Studies")).findFirst().get();
+        singer.setFirstName("John Clayton");
+        singer.removeAlbum(album);
+        singerDao.save(singer);
+        // test the update
+        listSingersWithAlbum(singerDao.findAllWithAlbum());
     }
 
     @After
