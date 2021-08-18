@@ -6,7 +6,7 @@ package com.muhammedtopgul.ch08.jpa2.service;
  * at 23:38
  */
 
-import com.muhammedtopgul.ch07.hibernate.entity.Singer;
+import com.muhammedtopgul.ch08.jpa2.entity.Singer;
 import org.apache.commons.lang3.NotImplementedException;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
@@ -14,6 +14,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import java.util.List;
 
 @Service("jpaSingerService")
@@ -29,19 +30,26 @@ public class SingerServiceImpl implements SingerService {
     @Transactional(readOnly = true)
     @Override
     public List<Singer> findAll() {
-        throw new NotImplementedException("findAll");
+        return entityManager
+                .createNamedQuery(Singer.FIND_ALL, Singer.class)
+                .getResultList();
     }
 
     @Transactional(readOnly = true)
     @Override
     public List<Singer> findAllWithAlbum() {
-        throw new NotImplementedException("findAllWithAlbum");
+        return entityManager
+                .createNamedQuery(Singer.FIND_ALL_WITH_ALBUM, Singer.class)
+                .getResultList();
     }
 
     @Transactional(readOnly = true)
     @Override
     public Singer findById(Long id) {
-        throw new NotImplementedException("findById");
+        TypedQuery<Singer> query = entityManager.createNamedQuery
+                (Singer.FIND_SINGER_BY_ID, Singer.class);
+        query.setParameter("id", id);
+        return query.getSingleResult();
     }
 
     @Override

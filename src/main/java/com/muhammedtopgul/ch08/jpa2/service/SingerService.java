@@ -6,7 +6,8 @@ package com.muhammedtopgul.ch08.jpa2.service;
  * at 23:38
  */
 
-import com.muhammedtopgul.ch07.hibernate.entity.Singer;
+
+import com.muhammedtopgul.ch08.jpa2.entity.Singer;
 
 import java.util.List;
 
