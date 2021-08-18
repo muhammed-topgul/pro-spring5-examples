@@ -70,6 +70,10 @@ public class Singer implements Serializable {
         getAlbums().remove(album);
     }
 
+    public boolean addInstrument(Instrument instrument) {
+        return getInstruments().add(instrument);
+    }
+
     @Override
     public String toString() {
         return "Singer - Id: " + id + ", First name: " + firstName

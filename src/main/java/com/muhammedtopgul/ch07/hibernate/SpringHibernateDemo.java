@@ -6,6 +6,7 @@ package com.muhammedtopgul.ch07.hibernate;
  * at 22:52
  */
 
+import com.muhammedtopgul.ch07.hibernate.config.AdvancedConfig;
 import com.muhammedtopgul.ch07.hibernate.config.AppConfig;
 import com.muhammedtopgul.ch07.hibernate.dao.SingerDao;
 import com.muhammedtopgul.ch07.hibernate.entity.Album;
@@ -23,7 +24,8 @@ public class SpringHibernateDemo {
     private static Logger logger = LoggerFactory.getLogger(SpringHibernateDemo.class);
 
     public static void main(String[] args) {
-        GenericApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+        // GenericApplicationContext ctx = new AnnotationConfigApplicationContext(AppConfig.class);
+        GenericApplicationContext ctx = new AnnotationConfigApplicationContext(AdvancedConfig.class);
 
         SingerDao singerDao = ctx.getBean(SingerDao.class);
 
