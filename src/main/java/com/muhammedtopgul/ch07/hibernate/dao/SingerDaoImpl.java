@@ -71,7 +71,7 @@ public class SingerDaoImpl implements SingerDao {
     }
 
     @Override
-    public void delete(Singer contact) {
-
+    public void delete(Singer singer) {
+        sessionFactory.getCurrentSession().delete(singer);
     }
 }
