@@ -67,7 +67,9 @@ public class SingerServiceImpl implements SingerService {
 
     @Override
     public void delete(Singer singer) {
-        throw new NotImplementedException("delete");
+        Singer mergedSinger = entityManager.merge(singer);
+        entityManager.remove(mergedSinger);
+        System.out.println("Singer with id: " + singer.getId() + " deleted successfully");
     }
 
     @Transactional(readOnly = true)

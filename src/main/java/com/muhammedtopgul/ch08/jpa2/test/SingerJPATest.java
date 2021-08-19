@@ -106,7 +106,7 @@ public class SingerJPATest {
     }
 
     @Test
-    public void testUpdate(){
+    public void testUpdate() {
         Singer singer = singerService.findById(1L);
         //making sure such singer exists assertNotNull(singer);
         //making sure we got expected record assertEquals("Mayer", singer.getLastName());
@@ -116,6 +116,15 @@ public class SingerJPATest {
         singer.setFirstName("John Clayton");
         singer.removeAlbum(album);
         singerService.save(singer);
+        listSingersWithAlbum(singerService.findAllWithAlbum());
+    }
+
+    @Test
+    public void testDelete() {
+        Singer singer = singerService.findById(2l);
+        //making sure such singer exists
+        assertNotNull(singer);
+        singerService.delete(singer);
         listSingersWithAlbum(singerService.findAllWithAlbum());
     }
 
