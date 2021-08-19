@@ -105,6 +105,20 @@ public class SingerJPATest {
         }
     }
 
+    @Test
+    public void testUpdate(){
+        Singer singer = singerService.findById(1L);
+        //making sure such singer exists assertNotNull(singer);
+        //making sure we got expected record assertEquals("Mayer", singer.getLastName());
+        //retrieve the album
+        Album album = singer.getAlbums().stream()
+                .filter(a -> a.getTitle().equals("Battle Studies")).findFirst().get();
+        singer.setFirstName("John Clayton");
+        singer.removeAlbum(album);
+        singerService.save(singer);
+        listSingersWithAlbum(singerService.findAllWithAlbum());
+    }
+
     private static void listSingers(List<Singer> singers) {
         System.out.println(" ---- Listing singers:");
         for (Singer singer : singers) {
