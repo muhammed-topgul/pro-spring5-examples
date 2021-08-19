@@ -6,6 +6,7 @@ package com.muhammedtopgul.ch08.jpa2.service;
  * at 23:38
  */
 
+import com.muhammedtopgul.ch08.jpa2.criteriaApi.Singer_;
 import com.muhammedtopgul.ch08.jpa2.entity.Singer;
 import org.apache.commons.lang3.NotImplementedException;
 import org.springframework.stereotype.Repository;
@@ -15,6 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
+import javax.persistence.criteria.*;
 import java.util.List;
 
 @Service("jpaSingerService")
@@ -61,7 +63,7 @@ public class SingerServiceImpl implements SingerService {
             System.out.println("Updating existing singer");
             entityManager.merge(singer);
         }
-        System.out.println("Saved singer id: " + singer.getId() );
+        System.out.println("Saved singer id: " + singer.getId());
         return singer;
     }
 
@@ -78,5 +80,33 @@ public class SingerServiceImpl implements SingerService {
         return entityManager
                 .createNativeQuery(ALL_SINGER_NATIVE_QUERY, "singerResult")
                 .getResultList();
+    }
+
+    @Transactional(readOnly = true)
+    @Override
+    public List<Singer> findByCriteriaQuery(String firstName, String lastName) {
+        System.out.println("Finding singer for firstName: " + firstName
+                + " and lastName: " + lastName);
+
+        CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        CriteriaQuery<Singer> criteriaQuery = criteriaBuilder.createQuery(Singer.class);
+        Root<Singer> singerRoot = criteriaQuery.from(Singer.class);
+        singerRoot.fetch(Singer_.albums, JoinType.LEFT);
+        singerRoot.fetch(Singer_.instruments, JoinType.LEFT);
+        criteriaQuery.select(singerRoot).distinct(true);
+
+        Predicate criteria = criteriaBuilder.conjunction();
+        if (firstName != null) {
+            Predicate predicate = criteriaBuilder.equal(singerRoot.get(Singer_.firstName), firstName);
+            criteria = criteriaBuilder.and(criteria, predicate);
+        }
+        if (lastName != null) {
+            Predicate predicate = criteriaBuilder.equal(singerRoot.get(Singer_.lastName), lastName);
+            criteria = criteriaBuilder.and(criteria, predicate);
+        }
+
+        criteriaQuery.where(criteria);
+
+        return entityManager.createQuery(criteriaQuery).getResultList();
     }
 }
