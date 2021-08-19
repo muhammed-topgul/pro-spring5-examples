@@ -76,7 +76,7 @@ public class SingerServiceImpl implements SingerService {
     @Override
     public List<Singer> findAllByNativeQuery() {
         return entityManager
-                .createNativeQuery(ALL_SINGER_NATIVE_QUERY, Singer.class)
+                .createNativeQuery(ALL_SINGER_NATIVE_QUERY, "singerResult")
                 .getResultList();
     }
 }
