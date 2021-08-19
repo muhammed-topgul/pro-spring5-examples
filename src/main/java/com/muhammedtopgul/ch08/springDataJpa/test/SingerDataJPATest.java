@@ -7,7 +7,9 @@ package com.muhammedtopgul.ch08.springDataJpa.test;
  */
 
 import com.muhammedtopgul.ch08.springDataJpa.config.DataJpaConfig;
+import com.muhammedtopgul.ch08.springDataJpa.entity.Album;
 import com.muhammedtopgul.ch08.springDataJpa.entity.Singer;
+import com.muhammedtopgul.ch08.springDataJpa.service.AlbumService;
 import com.muhammedtopgul.ch08.springDataJpa.service.SingerService;
 import org.junit.After;
 import org.junit.Before;
@@ -23,11 +25,13 @@ public class SingerDataJPATest {
 
     private GenericApplicationContext ctx;
     private SingerService singerService;
+    private AlbumService albumService;
 
     @Before
     public void setUp() {
         ctx = new AnnotationConfigApplicationContext(DataJpaConfig.class);
         singerService = ctx.getBean(SingerService.class);
+        albumService = ctx.getBean(AlbumService.class);
         assertNotNull(singerService);
     }
 
@@ -53,6 +57,16 @@ public class SingerDataJPATest {
         assertTrue(singers.size() > 0);
         assertEquals(1, singers.size());
         listSingers(singers);
+    }
+
+    @Test
+    public void testFindByTitle() {
+        List<Album> albums = albumService.findByTitle("The");
+        assertTrue(albums.size() > 0);
+        assertEquals(2, albums.size());
+        albums.forEach(a -> System.out.println(a.toString() + ", Singer: "
+                + a.getSinger().getFirstName() + " "
+                + a.getSinger().getLastName()));
     }
 
     private static void listSingers(List<Singer> singers) {
