@@ -4,6 +4,18 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <developers>
+        <developer>
+            <id>muhammed-topgul</id>
+            <name>Muhammed Topgul</name>
+            <email>muhammedtopgul.29@gmail.com</email>
+            <properties>
+                <github>https://github.com/muhammed-topgul</github>
+                <linkedind>https://www.linkedin.com/in/muhammed-topg%C3%BCl-557964185/</linkedind>
+            </properties>
+        </developer>
+    </developers>
+
     <groupId>com.muhammedtopgul</groupId>
     <artifactId>pro-spring5</artifactId>
     <version>1.0-SNAPSHOT</version>
